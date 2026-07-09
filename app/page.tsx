@@ -8,6 +8,7 @@ import FeaturedProductsSection from "@/components/FeaturedProductsSection";
 import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
 import StatsSection from "@/components/StatsSection";
+import TestimonialsSection from "@/components/TestimonialsSection";
 import VideoBoxSection from "@/components/VideoBoxSection";
 
 export default function Home() {
@@ -23,6 +24,7 @@ export default function Home() {
       <VideoBoxSection />
       <BusinessPartnersSection />
       <CompletedProjects />
+      <TestimonialsSection />
     </div>
   );
 }
