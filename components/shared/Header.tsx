@@ -18,14 +18,14 @@ export default function Header() {
   ];
 
   return (
-    <nav className="bg-primary text-white sticky top-0 z-50 shadow-md">
+    <nav className="font-space-grotesk bg-primary text-white sticky top-0 z-50 shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo / Brand Name */}
           <div className="shrink-0">
             <Link
               href="/"
-              className="text-xl sm:text-2xl font-black tracking-wider text-white"
+              className="text-xl sm:text-[32px] font-bold tracking-wider text-white"
             >
               MAIFUL TRADE LINK
             </Link>
@@ -37,7 +37,7 @@ export default function Header() {
               <Link
                 key={link.name}
                 href={link.href}
-                className={`text-xs font-bold tracking-widest transition-colors duration-200 hover:text-tertiary ${
+                className={`text-sm font-medium tracking-widest transition-colors duration-200 hover:text-tertiary ${
                   link.isActive ? "text-tertiary" : "text-white"
                 }`}
               >

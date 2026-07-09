@@ -99,7 +99,7 @@ export interface ButtonProps
   children: React.ReactNode;
 }
 
-export default function CustomButton({
+export default function Button({
   className,
   variant,
   colorScheme,
