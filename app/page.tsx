@@ -1,9 +1,11 @@
 import AboutUsSection from "@/components/AboutUsSection";
 import BrandPartnersSection from "@/components/BrandPartnersSection";
 import BstiComplianceSection from "@/components/BstiComplianceSection";
-import BusinessPartnersSection from "@/components/BusinessPartnersSection";
+import BusinessPartners from "@/components/BusinessPartners";
+import BusinessPartnersSection from "@/components/BusinessPartners";
 import CompletedProjects from "@/components/CompletedProjects";
 import CompletedProjectsSection from "@/components/CompletedProjects";
+import CTASection from "@/components/CTASection";
 import FeaturedProductsSection from "@/components/FeaturedProductsSection";
 import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
@@ -22,9 +24,10 @@ export default function Home() {
       <ServicesSection />
       <BstiComplianceSection />
       <VideoBoxSection />
-      <BusinessPartnersSection />
+      <BusinessPartners />
       <CompletedProjects />
       <TestimonialsSection />
+      <CTASection />
     </div>
   );
 }
