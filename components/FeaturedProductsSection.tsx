@@ -41,7 +41,7 @@ export default function FeaturedProductsSection() {
   ];
 
   return (
-    <section className="bg-[#F4F7FA] py-16 lg:py-24 font-space-grotesk">
+    <section className="bg-white py-16 lg:py-24 font-space-grotesk">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         {/* HEADER SECTION LAYOUT ROW */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-slate-200/60 pb-6">
