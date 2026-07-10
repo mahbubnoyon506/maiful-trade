@@ -46,17 +46,17 @@ export default function TestimonialsSection() {
   ];
 
   return (
-    <section className="bg-[#EDF0F3] py-16 lg:py-24 font-space-grotesk overflow-hidden">
+    <section className="bg-[#EDF0F3] py-8 sm:py-16 xl:py-24 font-space-grotesk overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* SECTION ROOT GRID SPLIT */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start">
-          {/* LEFT CONTENT CONTAINER (Spans 5 Columns) */}
-          <div className="lg:col-span-5 space-y-8 relative">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-6 items-start">
+          {/* LEFT CONTENT CONTAINER */}
+          <div className=" space-y-8 relative">
             <div className="space-y-3">
               <span className="text-sm font-medium tracking-widest uppercase text-secondary">
                 TESTIMONIALS
               </span>
-              <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight uppercase text-primary">
+              <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-primary tracking-tight leading-tight uppercase">
                 OUR CLIENTS SPEAK <br /> FOR US
               </h2>
             </div>
@@ -64,7 +64,7 @@ export default function TestimonialsSection() {
             {/* Render Stack of Dark Blue Primary Accent Cards */}
             <div className="space-y-6 relative pt-4">
               {/* Overlapping Floating Quote Graphic Indicator Icon */}
-              <div className="absolute -top-6 right-4 sm:right-8 bg-blue-600 text-white p-4 rounded-xl shadow-xl z-20 hidden sm:block animate-bounce-slow">
+              <div className="absolute -top-4 -right-4 lg:-right-7 bg-secondary text-white p-6 rounded-md shadow-xl z-20 hidden sm:block animate-bounce-slow">
                 <Quote className="w-8 h-8 fill-current rotate-180" />
               </div>
 
@@ -83,7 +83,7 @@ export default function TestimonialsSection() {
                     ))}
                   </div>
                   <p className="text-xs sm:text-base text-white font-light leading-relaxed">
-                    "{card.quote}"
+                    &quot;{card.quote}&quot;
                   </p>
                   <div className="pt-2 ">
                     <h4 className="text-sm sm:text-[15px] font-medium font-white tracking-wide uppercase">
@@ -98,8 +98,8 @@ export default function TestimonialsSection() {
             </div>
           </div>
 
-          {/* RIGHT CONTENT CONTAINER (Spans 7 Columns) */}
-          <div className="lg:col-span-7 space-y-6 lg:pl-6">
+          {/* RIGHT CONTENT CONTAINER */}
+          <div className="space-y-6 lg:pl-6">
             {rightLightCards.map((card, idx) => (
               <div
                 key={idx}
@@ -115,7 +115,7 @@ export default function TestimonialsSection() {
                   ))}
                 </div>
                 <p className="text-xs sm:text-base text-primary font-light leading-relaxed">
-                  "{card.quote}"
+                  &quot;{card.quote}&quot;
                 </p>
                 <div className="pt-2">
                   <h4 className="text-sm sm:text-[15px] font-medium text-primary tracking-wide uppercase">

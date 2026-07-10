@@ -63,7 +63,7 @@ export default function HeroSection() {
             <Button
               variant="solid"
               colorScheme="tertiary"
-              className="px-4 py-2 md:px-6 md:py-3.5 rounded-sm text-sm md:text-base xl:text-lg"
+              className=" rounded-sm "
               onClick={() => console.log("Get Quote Clicked")}
             >
               GET A FREE QUOTE
@@ -72,7 +72,7 @@ export default function HeroSection() {
             <Button
               variant="outline"
               colorScheme="primary"
-              className="border-white/30 text-white hover:bg-white/10 px-4 py-2 md:px-6 md:py-3.5 rounded-sm text-sm md:text-base xl:text-lg"
+              className="border-white/30 text-white hover:bg-white/10 rounded-sm "
               onClick={() => console.log("Talk to Expert Clicked")}
             >
               TALK TO EXPERT
@@ -93,7 +93,7 @@ export default function HeroSection() {
       </div>
 
       {/* FLOATING VERTICAL ACCENT NAVIGATION BADGE (Hidden on tiny viewport setups) */}
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 bg-tertiary py-6 px-3 rounded-l-2xl flex flex-col items-center gap-5 shadow-2xl border border-r-0 border-white/10 hidden md:flex">
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 bg-tertiary py-6 px-3 rounded-l-2xl flex-col items-center gap-5 shadow-2xl border border-r-0 border-white/10 hidden md:flex">
         <a
           href="#"
           className="text-white hover:scale-110 transition-transform"

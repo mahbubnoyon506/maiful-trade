@@ -3,17 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import socialIcons from "@/assets/images/social-media.png";
-import whatsApp from "@/assets/images/whatsapp.png";
-import { clsx, type ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
-import { Phone, Mail, MapPin, ArrowDownToLine } from "lucide-react";
 import Button from "../Button";
-
-// Inline helper for managing combined conditional classes safely
-function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
 
 export default function Footer() {
   const topLinks = [
@@ -40,7 +30,7 @@ export default function Footer() {
     <footer className=" font-poppins bg-primary text-white pt-12 pb-8 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* 1. TOP NAV LINKS */}
-        <div className="flex flex-wrap justify-between gap-x-2 gap-y-3 pb-8 border-b border-[#1E548A] text-base sm:text-lg font-semibold text-tertiary">
+        <div className="flex flex-wrap lg:justify-between gap-x-3 gap-y-3 pb-8 border-b border-[#1E548A] text-sm xl:text-lg font-semibold text-tertiary">
           {topLinks.map((link, idx) => (
             <Link
               key={idx}
@@ -53,13 +43,13 @@ export default function Footer() {
         </div>
 
         {/* 2. CORE INFORMATION GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 py-12 border-b border-[#1E548A] relative">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 py-12 border-b border-[#1E548A] md:divide-x divide-dashed devide-[#1E548A]">
           {/* Column 1: About the Company */}
-          <div className="space-y-4">
-            <h3 className="text-2xl font-semibold text-tertiary">
+          <div className="space-y-4 md:pr-6">
+            <h3 className="text-lg md:text-xl xl:text-2xl font-semibold text-tertiary">
               Over 15+ years in the industry
             </h3>
-            <div className="text-base sm:text-lg text-slate-300 leading-relaxed space-y-3 font-light">
+            <div className="text-sm xl:text-lg text-slate-300 leading-relaxed space-y-3 font-light">
               <p>We Are Trusted Truck Scale Manufacturing Company Since 2007</p>
               <p>
                 Maiful Trade Link is a renowned weighing scale manufacturer
@@ -69,8 +59,8 @@ export default function Footer() {
             </div>
 
             {/* Social Icons Placeholder Row */}
-            <div className="pt-2 flex items-center gap-3">
-              <span className="text-2xl font-semibold text-tertiary tracking-wide uppercase">
+            <div className="pt-2 flex flex-wrap items-center gap-3">
+              <span className="text-lg md:text-xl xl:text-2xl font-semibold text-tertiary tracking-wide uppercase">
                 Follow us
               </span>
 
@@ -84,12 +74,12 @@ export default function Footer() {
           </div>
 
           {/* Column 2: Contact Options */}
-          <div className="space-y-6 md:border-x md:border-[#1E548A] md:px-8">
+          <div className="space-y-6 md:pr-6">
             <div className="space-y-3">
-              <h3 className="text-2xl font-semibold text-tertiary flex items-center gap-2">
+              <h3 className="text-lg md:text-xl xl:text-2xl font-semibold text-tertiary flex items-center gap-2">
                 Call Us Now
               </h3>
-              <div className="text-base sm:text-lg text-slate-300 space-y-1 font-medium">
+              <div className="text-sm xl:text-lg text-slate-300 space-y-1 font-medium">
                 <p>
                   <span className="text-white/60 font-normal">Mobile</span>{" "}
                   (+880) 1711-706366
@@ -102,10 +92,10 @@ export default function Footer() {
             </div>
 
             <div className="space-y-2 pt-2">
-              <h3 className="text-2xl font-semibold text-tertiary">
+              <h3 className="text-lg md:text-xl xl:text-2xl font-semibold text-tertiary">
                 Send a Message
               </h3>
-              <div className="text-base sm:text-lg text-slate-300 space-y-1 font-light">
+              <div className="text-sm xl:text-lg text-slate-300 space-y-1 font-light">
                 <p>
                   <span className="text-white/60 font-normal">E-mail:</span>{" "}
                   sales@maifultradelink.com
@@ -124,13 +114,15 @@ export default function Footer() {
 
           {/* Column 3: Corporate Locations */}
           <div className="space-y-6">
-            <h3 className="text-2xl font-semibold text-tertiary">Visit Us</h3>
+            <h3 className="text-lg md:text-xl xl:text-2xl font-semibold text-tertiary">
+              Visit Us
+            </h3>
 
             <div className="space-y-1">
-              <h4 className="text-2xl font-semibold text-tertiary">
+              <h4 className="text-lg md:text-xl xl:text-2xl font-semibold text-tertiary">
                 Corporate Office
               </h4>
-              <p className="text-base sm:text-lg text-slate-300 font-light leading-relaxed">
+              <p className="text-sm xl:text-lg text-slate-300 font-light leading-relaxed">
                 Plot:07, Road:412, Sector:13
                 <br />
                 Purbachal New Town, Rupganj
@@ -140,10 +132,10 @@ export default function Footer() {
             </div>
 
             <div className="space-y-1 pt-2">
-              <h4 className="text-2xl font-semibold text-tertiary">
+              <h4 className="text-lg md:text-xl xl:text-2xl font-semibold text-tertiary">
                 Factory Office
               </h4>
-              <p className="text-base sm:text-lg text-slate-300 font-light leading-relaxed">
+              <p className="text-sm xl:text-lg text-slate-300 font-light leading-relaxed">
                 Purbagram, Rupganj
                 <br />
                 Narayanganj, Bangladesh
@@ -155,10 +147,10 @@ export default function Footer() {
         {/* 3. PRODUCT LINKS SECTION */}
         <div className="py-8 border-b border-[#1E548A] flex flex-col md:flex-row md:items-center justify-between gap-6 relative">
           <div className="space-y-3 ">
-            <h3 className="text-2xl font-semibold text-tertiary">
+            <h3 className="text-lg md:text-xl xl:text-2xl font-semibold text-tertiary">
               Our Products
             </h3>
-            <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-base sm:text-lg font-semibold text-white">
+            <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm xl:text-lg font-semibold text-white">
               {products.map((product, idx) => (
                 <React.Fragment key={idx}>
                   <Link href="#" className="hover:text-tertiary transition">
@@ -175,7 +167,7 @@ export default function Footer() {
           {/* Fixed Floating WhatsApp Badge Placeholder Positioning */}
           <div className="absolute right-0 top-1/2 -translate-y-1/2 hidden lg:block">
             <a
-              // href="https://wa.me/8801711706366"
+              href="https://wa.me/8801711706366"
               target="_blank"
               rel="noreferrer"
               className="transition-transform hover:scale-110"
@@ -184,8 +176,8 @@ export default function Footer() {
               <Image
                 src="/assets/images/whatsapp.png"
                 alt="WhatsApp"
-                width={100}
-                height={100}
+                width={80}
+                height={80}
               />
             </a>
           </div>
@@ -193,17 +185,18 @@ export default function Footer() {
 
         {/* 4. COPYRIGHT & DOWNLOAD BUTTON BAR */}
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-6">
-          <p className="text-sm sm:text-base text-slate-400 font-light text-center md:text-left">
+          <p className="text-sm xl:text-base text-slate-400 font-light text-center md:text-left">
             © 2026 Maiful Trade Link. All rights reserved. | Premium Weighing
             Solutions in Bangladesh
           </p>
 
-          <Button
-            variant="solid"
-            colorScheme="tertiary"
-            className="px-6 py-3 rounded-md"
-          >
+          <Button variant="solid" colorScheme="tertiary" className="rounded-md">
             DOWNLOAD COMPANY PROFILE
+            <img
+              className="w-8 h-8 ml-2"
+              src="/assets/images/download-icon.png"
+              alt=""
+            />
           </Button>
         </div>
       </div>

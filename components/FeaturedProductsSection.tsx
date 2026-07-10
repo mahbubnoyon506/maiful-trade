@@ -4,44 +4,44 @@ import React from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import Button from "./Button";
-// Reusable button from earlier steps
+import Image from "next/image";
 
 export default function FeaturedProductsSection() {
   const products = [
     {
       title: "Digital Truck Scale",
-      emoji: "🚛",
+      image: "/assets/images/truck-scale.png",
       href: "#",
     },
     {
       title: "Platform",
-      emoji: "🏗️",
+      image: "/assets/images/platform.png",
       href: "#",
     },
     {
       title: "Animal Scale",
-      emoji: "🐄",
+      image: "/assets/images/animal-scale.png",
       href: "#",
     },
     {
       title: "Floor scale",
-      emoji: "🟦",
+      image: "/assets/images/floor-scale.png",
       href: "#",
     },
     {
       title: "Crane Scale",
-      emoji: "🏗️",
+      image: "/assets/images/crane-scale.png",
       href: "#",
     },
     {
       title: "Bench Scale",
-      emoji: "⚖️",
+      image: "/assets/images/bench-scale.png",
       href: "#",
     },
   ];
 
   return (
-    <section className="bg-white py-16 lg:py-24 font-space-grotesk">
+    <section className="bg-[#EDF0F3] py-8 sm:py-16 xl:py-24 font-space-grotesk">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         {/* HEADER SECTION LAYOUT ROW */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-slate-200/60 pb-6">
@@ -49,7 +49,7 @@ export default function FeaturedProductsSection() {
             <span className="text-sm font-medium tracking-widest uppercase text-secondary">
               OUR FEATURED PRODUCTS
             </span>
-            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight uppercase text-primary">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-primary tracking-tight leading-tight uppercase">
               OUR COMPLETE WEIGHING SOLUTIONS
             </h2>
           </div>
@@ -58,7 +58,7 @@ export default function FeaturedProductsSection() {
             <Button
               variant="solid"
               colorScheme="tertiary"
-              className="px-6 py-3 rounded-md text-lg whitespace-nowrap"
+              className="rounded-md"
               onClick={() => console.log("View All Products Clicked")}
             >
               VIEW ALL
@@ -67,34 +67,35 @@ export default function FeaturedProductsSection() {
         </div>
 
         {/* COMPACT PRODUCT CARDS MATRIX GRID */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
           {products.map((product, idx) => (
             <div
               key={idx}
-              className="bg-white rounded-2xl p-4 shadow-sm border border-slate-100 flex flex-col justify-between transition-all duration-300 hover:shadow-md hover:-translate-y-1"
+              className="rounded-2xl flex flex-col justify-between transition-all duration-300 hover:-translate-y-1"
             >
-              {/* Product Visual Container Canvas Box */}
-              <div className="bg-[#F8FAFC] rounded-xl aspect-[4/3] w-full flex items-center justify-center relative overflow-hidden group border border-slate-50">
-                <span className="text-6xl transition-transform duration-300 group-hover:scale-110 select-none">
-                  {product.emoji}
-                </span>
-                {/* Background Overlay Hint subtle element */}
-                <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className=" w-full  group">
+                <Image
+                  width={377}
+                  height={310}
+                  src={product.image}
+                  alt="product-image"
+                  className="w-full object-contain"
+                />
               </div>
 
               {/* Title and Detailed Action Navigation Row */}
               <div className="pt-5 pb-2 space-y-3">
-                <h3 className="font-k2d text-lg sm:text-2xl font-bold tracking-tight text-black">
+                <h3 className="font-k2d text-lg md:text-xl xl:text-2xl font-bold tracking-tight text-black">
                   {product.title}
                 </h3>
 
                 <Link href={product.href}>
                   <Button
                     variant="solid"
-                    className="bg-[#313131] px-6 py-3 rounded-md text-base font-semibold whitespace-nowrap font-poppins"
+                    className="bg-[#313131] text-white rounded-md text-base font-poppins"
                   >
                     View Details
-                    <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
+                    <ArrowRight className="ml-2 w-3.5 h-3.5 stroke-[2.5]" />
                   </Button>
                 </Link>
               </div>

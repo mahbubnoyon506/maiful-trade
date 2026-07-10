@@ -31,7 +31,7 @@ export default function StatsSection() {
           {statsFeatures.map((feature, idx) => (
             <div
               key={idx}
-              className="flex items-start gap-4 p-2 transition-all hover:translate-y-[-2px] duration-200"
+              className="flex items-start gap-4 p-2 transition-all hover:-translate-y-0.5 duration-200"
             >
               {/* Icon Slot */}
               <div className="pt-1">
@@ -48,7 +48,7 @@ export default function StatsSection() {
                 <h3 className="text-lg md:text-xl xl:text-2xl font-semibold text-foreground tracking-tight">
                   {feature.title}
                 </h3>
-                <p className="text-xs xl:text-base text-neutral leading-relaxed font-normal max-w-[280px] md:max-w-none">
+                <p className="text-xs xl:text-base text-neutral leading-relaxed font-normal max-w-70 md:max-w-none">
                   {feature.description}
                 </p>
               </div>

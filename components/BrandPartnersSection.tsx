@@ -3,6 +3,7 @@
 import React from "react";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
+import Image from "next/image";
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -10,23 +11,23 @@ function cn(...inputs: ClassValue[]) {
 
 export default function BrandPartnersSection() {
   // Brand logo data from Brands logo.png
-  const basicLogos = [
-    { name: "ZEMIC", textStyle: "text-blue-800 font-bold" },
-    { name: "KELI", textStyle: "text-red-600 font-extrabold font-mono" },
-    { name: "YAOHUA", textStyle: "text-red-500 font-bold tracking-tight" },
-    { name: "T-Scale", textStyle: "text-blue-900 italic font-black" },
-    { name: "YUBO", textStyle: "text-blue-500 font-black" },
+  const logos = [
+    "/assets/images/zemic.png",
+    "/assets/images/keli.png",
+    "/assets/images/yaohua.png",
+    "/assets/images/tscale.png",
+    "/assets/images/yubo.png",
   ];
 
   return (
-    <section className="bg-tertiary text-white py-16 lg:py-20 font-space-grotesk">
+    <section className="bg-tertiary text-white py-8 sm:py-16 xl:py-24 font-space-grotesk">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* SECTION HEADER */}
         <div className="text-center space-y-2">
-          <span className="text-sm font-medium tracking-widest uppercase text-white/80">
+          <span className="text-sm font-medium tracking-widest uppercase text-white">
             OUR BRAND PARTNERS
           </span>
-          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight uppercase">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-white tracking-tight leading-tight uppercase">
             PREMIUM TECHNOLOGY PARTNERS
           </h2>
         </div>
@@ -36,18 +37,14 @@ export default function BrandPartnersSection() {
           {/* Card 1: Utilcell / Air Shipping */}
           <div className="bg-white rounded-2xl p-8 shadow-lg flex flex-col justify-between text-foreground transition-all duration-300 hover:-translate-y-1">
             <div className="space-y-6">
-              {/* Simulated Utilcell Logo Asset Header */}
-              <div className="flex items-center gap-2 border-b border-slate-100 pb-4">
-                <span className="text-2xl font-black text-emerald-700 tracking-tighter">
-                  UTILCELL
-                </span>{" "}
-                <span className="text-[9px] text-slate-400 font-mono self-end pb-1 uppercase tracking-wider hidden sm:inline">
-                  LOAD CELLS
-                </span>
-              </div>
-
+              <Image
+                width={300}
+                height={66}
+                alt=""
+                src="/assets/images/brand-cell.png"
+              />
               <div className="space-y-2">
-                <h3 className="text-lg md:text-2xl font-black text-primary uppercase tracking-tight">
+                <h3 className="text-lg md:text-xl xl:text-2xl font-black text-primary uppercase tracking-tight">
                   AIR SHIPPING
                 </h3>
                 <p className="text-xs sm:text-base text-neutral font-normal leading-relaxed">
@@ -61,15 +58,14 @@ export default function BrandPartnersSection() {
           {/* Card 2: Sensocar / Truck Shipping */}
           <div className="bg-white rounded-2xl p-8 shadow-lg flex flex-col justify-between text-foreground transition-all duration-300 hover:-translate-y-1">
             <div className="space-y-6">
-              {/* Simulated Sensocar Logo Asset Header */}
-              <div className="flex items-center gap-2 border-b border-slate-100 pb-4">
-                <span className="text-2xl font-black text-slate-800 tracking-widest">
-                  SENSOCAR
-                </span>{" "}
-              </div>
-
+              <Image
+                width={211}
+                height={56}
+                alt=""
+                src="/assets/images/sensocar.png"
+              />
               <div className="space-y-2">
-                <h3 className="text-lg md:text-2xl font-black text-primary uppercase tracking-tight">
+                <h3 className="text-lg md:text-xl xl:text-2xl font-black text-primary uppercase tracking-tight">
                   TRUCK SHIPPING
                 </h3>
                 <p className="text-xs sm:text-base text-neutral font-normal leading-relaxed">
@@ -83,25 +79,15 @@ export default function BrandPartnersSection() {
 
         {/* BOTTOM ROW GRID: Core Manufacturing Brand Badges */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 pt-4">
-          {basicLogos.map((logo, idx) => (
+          {logos.map((logo, idx) => (
             <div
               key={idx}
               className={cn(
-                "bg-white rounded-xl py-5 px-4 shadow-md flex items-center justify-center min-h-[70px] transition-all duration-200 hover:scale-[1.03]",
-                // Centers the final odd element smoothly on mobile viewports
-                idx === basicLogos.length - 1 ? "col-span-2 sm:col-span-1" : "",
+                "bg-white rounded-xl shadow-md flex items-center justify-center transition-all duration-200 hover:scale-[1.03]",
+                idx === logos.length - 1 ? "col-span-2 sm:col-span-1" : "",
               )}
             >
-              <div className="text-center">
-                <span
-                  className={cn(
-                    "text-base sm:text-lg tracking-wider block select-none",
-                    logo.textStyle,
-                  )}
-                >
-                  {logo.name}
-                </span>
-              </div>
+              <Image width={195} height={85} alt="brand-logo" src={logo} />
             </div>
           ))}
         </div>

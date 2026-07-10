@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Box } from "lucide-react";
+import Image from "next/image";
 
 export default function CompletedProjects() {
   const projectCards = [
@@ -44,20 +45,17 @@ export default function CompletedProjects() {
   ];
 
   return (
-    <section className="bg-white py-16 lg:py-24 font-space-grotesk">
+    <section className="bg-white py-8 sm:py-16 xl:py-24 font-space-grotesk">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         {/* 1. HERO / INTRO GRID */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          {/* Left Block: Image Showcase Container */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-center">
           <div className="lg:col-span-5 relative w-full">
-            <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-lg bg-slate-100 border border-slate-200/60">
-              {/* Dynamic Image Overlay Layer */}
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-transparent to-transparent z-10" />
-              <div className="absolute inset-0 flex items-center justify-center text-slate-400 font-medium text-xs">
-                {/* Visual placeholder for local construction/installation image setup */}
-                [ On-Site Scale Installation Image ]
-              </div>
-            </div>
+            <Image
+              width={500}
+              height={400}
+              alt=""
+              src="/assets/images/completed-project.png"
+            />
           </div>
 
           {/* Right Block: Explanatory Content */}
@@ -66,13 +64,13 @@ export default function CompletedProjects() {
               COMPLETED PROJECTS
             </span>
 
-            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight uppercase text-primary uppercase">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-primary tracking-tight leading-tight uppercase">
               PROVEN INSTALLATIONS.
               <br />
               TRUSTED PERFORMANCE.
             </h2>
 
-            <div className="space-y-4 text-sm sm:text-lg text-neutral font-roboto font-light leading-relaxed">
+            <div className="space-y-4 text-sm md:text-lg text-neutral font-roboto font-light leading-relaxed">
               <p>
                 Over the years, Maiful Trade has successfully delivered and
                 installed industrial weighing solutions for businesses across
@@ -91,7 +89,7 @@ export default function CompletedProjects() {
         </div>
 
         {/* SEPARATOR DASHED LINE MATCHING MOCKUP */}
-        <div className="w-full border-t border-dashed border-slate-300" />
+        <div className="w-full border-t border-dashed border-neutral" />
 
         {/* 2. SUB-PROJECTS PORTFOLIO MATRIX */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-12 gap-x-8">
@@ -101,7 +99,7 @@ export default function CompletedProjects() {
               className="flex flex-col items-center text-center space-y-4 group max-w-sm mx-auto"
             >
               {/* Project Mini Tag */}
-              <span className="text-xs font-bold text-secondary bg-slate-100 border border-slate-200/60 px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+              <span className="text-xs text-primary bg-white border border-slate-200/60 px-2.5 py-1.5 rounded-full uppercase tracking-wider">
                 {project.id}
               </span>
 
@@ -111,12 +109,12 @@ export default function CompletedProjects() {
               </div>
 
               {/* Title Header */}
-              <h3 className="text-xl sm:text-2xl font-bold text-primary tracking-wide leading-snug uppercase max-w-[240px] transition-colors duration-200 group-hover:text-tertiary">
+              <h3 className="text-lg md:text-xl xl:text-2xl font-bold text-primary tracking-wide leading-snug uppercase max-w-60 transition-colors duration-200">
                 {project.title}
               </h3>
 
               {/* Informational Description Text */}
-              <p className="text-xs sm:text-base text-neutral font-roboto font-light leading-relaxed max-w-[300px]">
+              <p className="text-xs sm:text-base text-neutral font-roboto font-light leading-relaxed max-w-75">
                 {project.description}
               </p>
             </div>

@@ -3,7 +3,6 @@
 import React from "react";
 import { Box } from "lucide-react";
 import Button from "./Button";
-// Reusable button from previous steps
 
 export default function ServicesSection() {
   const services = [
@@ -46,14 +45,14 @@ export default function ServicesSection() {
   ];
 
   return (
-    <section className="bg-white py-16 lg:py-24 font-sans">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 flex flex-col items-center">
+    <section className="bg-white py-8 sm:py-16 xl:py-24 font-sans">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4 xl:space-y-6 flex flex-col items-center">
         {/* HEADER BLOCK */}
-        <div className="text-center space-y-2 max-w-3xl mx-auto">
+        <div className="text-center space-y-2">
           <span className="text-sm font-medium tracking-widest uppercase text-secondary">
             OUR SERVICES
           </span>
-          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight uppercase text-primary">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-primary tracking-tight leading-tight uppercase">
             COMPLETE AFTER-SALES SUPPORT AND PROFESSIONAL WEIGHING SERVICES
           </h2>
         </div>
@@ -63,29 +62,25 @@ export default function ServicesSection() {
           {services.map((service, idx) => (
             <div
               key={idx}
-              className={`rounded-2xl p-8 transition-all duration-300 flex flex-col justify-between min-h-[280px] ${
+              className={`rounded-2xl p-8 transition-all duration-300 flex flex-col justify-between min-h-70 group ${
                 service.isHighlighted
-                  ? "bg-primary text-white shadow-xl translate-y-[-4px]"
+                  ? "bg-primary text-white shadow-xl -translate-y-1"
                   : "bg-white text-foreground hover:shadow-md"
               }`}
             >
               <div className="space-y-6">
                 {/* Custom Box Icon Container */}
                 <div
-                  className={`w-12 h-12 rounded-xl flex items-center justify-center shadow-sm ${
-                    service.isHighlighted
-                      ? "bg-secondary text-white"
-                      : "bg-secondary text-white"
-                  }`}
+                  className={`w-12 h-12 rounded-xl flex items-center justify-center shadow-sm bg-secondary text-white`}
                 >
-                  <Box className="w-5 h-5 stroke-[2]" />
+                  <Box className="w-5 h-5 stroke-2" />
                 </div>
 
                 {/* Typography Block */}
                 <div className="space-y-3">
                   <h3
-                    className={`text-lg sm:text-2xl font-bold tracking-tight uppercase ${
-                      service.isHighlighted ? "text-white" : "text-primary"
+                    className={`text-lg md:text-xl xl:text-2xl font-bold tracking-tight uppercase ${
+                      service.isHighlighted ? "text-white" : "text-primary "
                     }`}
                   >
                     {service.title}
@@ -104,7 +99,7 @@ export default function ServicesSection() {
         </div>
 
         {/* BOTTOM ACTION CTA */}
-        <div className="pt-4">
+        <div className="">
           <Button
             variant="solid"
             colorScheme="tertiary"
