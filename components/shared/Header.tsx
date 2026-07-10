@@ -20,24 +20,24 @@ export default function Header() {
   return (
     <nav className="font-space-grotesk bg-[#070F33] text-white sticky top-0 z-50 shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between gap-3 h-20">
           {/* Logo / Brand Name */}
           <div className="shrink-0">
             <Link
               href="/"
-              className="text-xl sm:text-[32px] font-bold tracking-wider text-white"
+              className="text-lg sm:text-xl xl:text-[32px] font-bold tracking-wider text-white"
             >
               MAIFUL TRADE LINK
             </Link>
           </div>
 
           {/* Desktop Navigation Links */}
-          <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
+          <div className="hidden lg:flex items-center space-x-4 xl:space-x-8">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className={`text-sm font-medium tracking-widest transition-colors duration-200 hover:text-tertiary ${
+                className={`text-xs xl:text-sm font-medium tracking-widest transition-colors duration-200 hover:text-tertiary ${
                   link.isActive ? "text-tertiary" : "text-white"
                 }`}
               >

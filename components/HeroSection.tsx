@@ -7,100 +7,88 @@ import Button from "./Button";
 
 export default function HeroSection() {
   return (
-    <section className=" font-space-grotesk relative bg-primary text-white overflow-hidden py-16 lg:py-24 min-h-[600px] flex items-center">
+    <section className=" font-space-grotesk relative bg-primary text-white overflow-hidden py-8 sm:py-16 xl:py-24 min-h-150 ">
       {/* Container wrapper */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          {/* LEFT SIDE CONTENT - Spans 7 columns on large desktops */}
-          <div className="lg:col-span-7 space-y-6 z-10">
-            <p className="text-base sm:text-lg font-medium tracking-widest uppercase text-white/80">
-              WE ARE BEST WEIGHING SCALE PROVIDER
-            </p>
+        <div className="space-y-4 xl:space-y-6">
+          <p className="text-sm md:text-base xl:text-lg font-medium tracking-widest uppercase text-white/80">
+            WE ARE BEST WEIGHING SCALE PROVIDER
+          </p>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[64px] font-black tracking-tight leading-tight uppercase">
-              COMPLETE INDUSTRIAL & <br className="hidden md:inline" />
-              PRECISION WEIGHING SOLUTIONS <br />
-              <span className="text-tertiary">IN ONE PLACE</span>
-            </h1>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl xl:text-[64px] font-black tracking-tight leading-tight uppercase">
+            COMPLETE INDUSTRIAL & <br className="hidden md:inline" />
+            PRECISION WEIGHING SOLUTIONS <br />
+            <span className="text-tertiary">IN ONE PLACE</span>
+          </h1>
 
-            <p className="text-base sm:text-lg text-slate-300 max-w-xl font-light leading-relaxed">
-              From truck scales to laboratory balances—we provide accurate,
-              durable, and industry-ready weighing systems for every business
-              need in Bangladesh.
-            </p>
+          <p className="text-sm md:text-base xl:text-lg text-slate-300 max-w-xl font-light leading-relaxed">
+            From truck scales to laboratory balances—we provide accurate,
+            durable, and industry-ready weighing systems for every business need
+            in Bangladesh.
+          </p>
 
-            {/* STATS COUNT GRID ROW */}
-            <div className="flex flex-wrap items-center gap-y-4 pt-4 text-white">
-              <div className="pr-6 min-w-[120px]">
-                <div className="text-3xl sm:text-5xl font-black tracking-tight">
-                  30K
-                </div>
-                <div className="uppercase tracking-wider text-slate-400 mt-1">
-                  Satisfied Clients
-                </div>
+          {/* STATS COUNT GRID ROW */}
+          <div className="flex flex-wrap md:divide-x-2 divide-dashed devide-neutral items-center gap-4 md:gap-0 pt-4 text-white">
+            <div className="md:pr-6 min-w-30">
+              <div className="text-xl md:text-3xl xl:text-5xl font-black tracking-tight">
+                30K
               </div>
-
-              <div className="border-l border-dashed border-white/20 px-6 min-w-[120px]">
-                <div className="text-2xl sm:text-5xl font-black tracking-tight">
-                  15 +
-                </div>
-                <div className="uppercase tracking-wider text-slate-400 mt-1">
-                  Years of Experience
-                </div>
-              </div>
-
-              <div className="border-l border-dashed border-white/20 px-6 min-w-[120px]">
-                <div className="text-2xl sm:text-5xl font-black tracking-tight">
-                  12 +
-                </div>
-                <div className="uppercase tracking-wider text-slate-400 mt-1">
-                  Expert Technicians
-                </div>
+              <div className="text-xs md:text-sm xl:text-base uppercase tracking-wider text-slate-400 mt-1">
+                Satisfied Clients
               </div>
             </div>
 
-            {/* ACTION BUTTONS */}
-            <div className="flex flex-wrap gap-4 pt-6">
-              <Button
-                variant="solid"
-                colorScheme="tertiary"
-                className="px-6 py-3.5 rounded-sm text-lg"
-                onClick={() => console.log("Get Quote Clicked")}
-              >
-                GET A FREE QUOTE
-              </Button>
+            {/* <div className="border-l-2 border-r-2 border-dashed border-neutral px-6 min-w-30"> */}
+            <div className=" md:px-6 min-w-30">
+              <div className="text-xl md:text-3xl xl:text-5xl font-black tracking-tight">
+                15 +
+              </div>
+              <div className="text-xs md:text-sm xl:text-base uppercase tracking-wider text-slate-400 mt-1">
+                Years of Experience
+              </div>
+            </div>
 
-              <Button
-                variant="outline"
-                colorScheme="primary"
-                className="border-white/30 text-white hover:bg-white/10 px-6 py-3.5 rounded-sm text-lg"
-                onClick={() => console.log("Talk to Expert Clicked")}
-              >
-                TALK TO EXPERT
-              </Button>
+            <div className="md:px-6 min-w-30">
+              <div className="text-xl md:text-3xl xl:text-5xl font-black tracking-tight">
+                12 +
+              </div>
+              <div className="text-xs md:text-sm xl:text-base uppercase tracking-wider text-slate-400 mt-1">
+                Expert Technicians
+              </div>
             </div>
           </div>
 
-          {/* RIGHT SIDE ASSET PANEL - Spans 5 columns */}
-          <div className="lg:col-span-5 relative w-full flex justify-center lg:justify-end">
-            {/* Truck & Scale Imagery Wrapper */}
-            <div className="relative w-full max-w-[500px] lg:max-w-none aspect-[4/3] sm:aspect-[16/10] lg:aspect-square">
-              {/* Fallback structure representing the graphic element placement dynamically */}
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none transform scale-110 lg:translate-x-10">
-                <span className="text-[180px] opacity-5 select-none font-black tracking-tighter absolute -top-10">
-                  SCALE
-                </span>
-                {/* Simulated Truck Render Container mapping dimensions */}
-                <div className="relative w-full h-full min-h-[300px] flex items-end">
-                  <div className="w-full h-6 bg-slate-400/30 rounded border border-white/10 relative shadow-2xl">
-                    <div className="absolute -top-32 right-4 text-[120px] leading-none filter drop-shadow-2xl">
-                      🚛
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          {/* ACTION BUTTONS */}
+          <div className="flex flex-wrap gap-4 pt-6">
+            <Button
+              variant="solid"
+              colorScheme="tertiary"
+              className="px-4 py-2 md:px-6 md:py-3.5 rounded-sm text-sm md:text-base xl:text-lg"
+              onClick={() => console.log("Get Quote Clicked")}
+            >
+              GET A FREE QUOTE
+            </Button>
+
+            <Button
+              variant="outline"
+              colorScheme="primary"
+              className="border-white/30 text-white hover:bg-white/10 px-4 py-2 md:px-6 md:py-3.5 rounded-sm text-sm md:text-base xl:text-lg"
+              onClick={() => console.log("Talk to Expert Clicked")}
+            >
+              TALK TO EXPERT
+            </Button>
           </div>
+        </div>
+
+        <div className="relative w-full max-w-75 sm:max-w-105 md:max-w-130 lg:max-w-150 xl:max-w-175 lg:absolute lg:right-0 lg:bottom-0 mx-auto lg:mx-0 mt-8 lg:mt-0">
+          <Image
+            width={700}
+            height={600}
+            alt="Truck scale illustration"
+            src="/assets/images/truck.png"
+            className="w-full h-auto object-contain"
+            sizes="(max-width: 1024px) 100vw, 700px"
+          />
         </div>
       </div>
 

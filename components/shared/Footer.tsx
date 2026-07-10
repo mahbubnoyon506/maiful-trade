@@ -75,7 +75,7 @@ export default function Footer() {
               </span>
 
               <Image
-                src={socialIcons}
+                src="/assets/images/social-media.png"
                 alt="Social Icons"
                 width={200}
                 height={50}
@@ -181,7 +181,12 @@ export default function Footer() {
               className="transition-transform hover:scale-110"
               aria-label="Chat on Whatsapp"
             >
-              <Image src={whatsApp} alt="WhatsApp" width={100} height={100} />
+              <Image
+                src="/assets/images/whatsapp.png"
+                alt="WhatsApp"
+                width={100}
+                height={100}
+              />
             </a>
           </div>
         </div>
