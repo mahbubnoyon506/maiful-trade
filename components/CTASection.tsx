@@ -24,7 +24,12 @@ export default function CTASection() {
             {/* ACTION INTERFACE ELEMENTS */}
             <div className="mt-3 md:mt-16">
               {/* Phone / Whatsapp Contact Badge Block */}
-              <a href="tel:01711706366">
+              <a
+                href="https://wa.me/8801711706366"
+                target="_blank"
+                rel="noreferrer"
+                title="WhatsApp Chat"
+              >
                 <Button
                   variant="solid"
                   colorScheme="primary"

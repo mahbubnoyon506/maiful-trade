@@ -1,3 +1,5 @@
+"use client";
+import { handleDownloadProfile } from "@/utility/helperFunction";
 import Image from "next/image";
 
 export default function FloatingButton() {
@@ -7,6 +9,7 @@ export default function FloatingButton() {
         href="#"
         className="text-white hover:scale-110 transition-transform bg-white p-0.5 rounded-full"
         title="Download Profile"
+        onClick={handleDownloadProfile}
       >
         <Image
           width={25}

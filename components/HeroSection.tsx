@@ -71,14 +71,21 @@ export default function HeroSection() {
               GET A FREE QUOTE
             </Button>
 
-            <Button
-              variant="outline"
-              colorScheme="primary"
-              className="border-neutral text-white hover:bg-white/10 rounded-sm "
-              onClick={() => console.log("Talk to Expert Clicked")}
+            <a
+              href="https://wa.me/8801711706366"
+              target="_blank"
+              rel="noreferrer"
+              title="WhatsApp Chat"
             >
-              TALK TO EXPERT
-            </Button>
+              <Button
+                variant="outline"
+                colorScheme="primary"
+                className="border-neutral text-white hover:bg-white/10 rounded-sm "
+                onClick={() => console.log("Talk to Expert Clicked")}
+              >
+                TALK TO EXPERT
+              </Button>
+            </a>
           </div>
         </div>
 
