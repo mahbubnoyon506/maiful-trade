@@ -1,10 +1,13 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Button from "./Button";
+import QuoteModal from "./QuoteModal";
 
 export default function HeroSection() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <section className=" font-space-grotesk relative bg-primary text-white overflow-hidden py-8 sm:py-16 xl:py-24 min-h-150 ">
       {/* Container wrapper */}
@@ -62,8 +65,8 @@ export default function HeroSection() {
             <Button
               variant="solid"
               colorScheme="tertiary"
-              className=" rounded-sm "
-              onClick={() => console.log("Get Quote Clicked")}
+              className="rounded-sm"
+              onClick={() => setIsModalOpen(true)}
             >
               GET A FREE QUOTE
             </Button>
@@ -71,7 +74,7 @@ export default function HeroSection() {
             <Button
               variant="outline"
               colorScheme="primary"
-              className="border-white/30 text-white hover:bg-white/10 rounded-sm "
+              className="border-neutral text-white hover:bg-white/10 rounded-sm "
               onClick={() => console.log("Talk to Expert Clicked")}
             >
               TALK TO EXPERT
@@ -90,6 +93,8 @@ export default function HeroSection() {
           />
         </div>
       </div>
+
+      <QuoteModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   );
 }

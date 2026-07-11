@@ -1,10 +1,12 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Button from "./Button";
 import Image from "next/image";
+import QuoteModal from "./QuoteModal";
 
 export default function CTASection() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <section className="bg-white pt-8 sm:pt-16 md:pt-0 font-space-grotesk">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -43,6 +45,7 @@ export default function CTASection() {
                 variant="solid"
                 colorScheme="tertiary"
                 className="mt-4 min-w-88.25 rounded-lg flex items-center justify-center gap-3 normal-case font-poppins tracking-wider"
+                onClick={() => setIsModalOpen(true)}
               >
                 <Image
                   width={24}
@@ -66,6 +69,7 @@ export default function CTASection() {
           </div>
         </div>
       </div>
+      <QuoteModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   );
 }

@@ -17,7 +17,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         solid: "shadow-sm",
-        outline: "border-2 bg-transparent",
+        outline: "border-1 bg-transparent",
         ghost: "bg-transparent",
       },
       colorScheme: {

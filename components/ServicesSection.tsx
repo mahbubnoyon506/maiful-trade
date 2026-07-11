@@ -1,10 +1,12 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { Box } from "lucide-react";
 import Button from "./Button";
+import QuoteModal from "./QuoteModal";
 
 export default function ServicesSection() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const services = [
     {
       title: "INSTALLATION & SETUP",
@@ -104,12 +106,13 @@ export default function ServicesSection() {
             variant="solid"
             colorScheme="tertiary"
             className="px-8 py-4 rounded-md text-lg font-medium shadow-lg"
-            onClick={() => console.log("Get a Free Quote clicked")}
+            onClick={() => setIsModalOpen(true)}
           >
             GET A FREE QUOTE
           </Button>
         </div>
       </div>
+      <QuoteModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   );
 }

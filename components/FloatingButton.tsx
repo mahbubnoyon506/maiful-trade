@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function FloatingButton() {
   return (
-    <div className="fixed right-8 top-1/2 z-50 -translate-y-1/2 bg-tertiary py-3 px-1.5 rounded-full flex-col items-center gap-2 shadow-2xl border border-r-0 border-white/10 hidden md:flex">
+    <div className="fixed right-6 top-1/2 z-50 -translate-y-1/2 bg-tertiary py-3 px-1.5 rounded-full flex-col items-center gap-2 shadow-2xl border border-r-0 border-white/10 hidden md:flex">
       <a
         href="#"
         className="text-white hover:scale-110 transition-transform bg-white p-0.5 rounded-full"
