@@ -42,7 +42,7 @@ export default function FeaturedProductsSection() {
 
   return (
     <section className="bg-[#EDF0F3] py-8 sm:py-16 xl:py-24 font-space-grotesk">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4 xl:space-y-10">
         {/* HEADER SECTION LAYOUT ROW */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-slate-200/60 pb-6">
           <div className="space-y-2">
@@ -92,7 +92,7 @@ export default function FeaturedProductsSection() {
                 <Link href={product.href}>
                   <Button
                     variant="solid"
-                    className="bg-[#313131] text-white rounded-md text-base font-poppins"
+                    className="bg-[#313131] hover:bg-tertiary text-white rounded-md text-base font-poppins"
                   >
                     View Details
                     <ArrowRight className="ml-2 w-3.5 h-3.5 stroke-[2.5]" />

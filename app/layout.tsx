@@ -9,6 +9,8 @@ import {
 import "./globals.css";
 import Header from "@/components/shared/Header";
 import Footer from "@/components/shared/Footer";
+import BackToTop from "@/components/BackToTop";
+import FloatingButton from "@/components/FloatingButton";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -53,6 +55,8 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
+        <FloatingButton />
+        <BackToTop />
       </body>
     </html>
   );

@@ -2,8 +2,9 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { Download, Mail, Menu, Phone, X } from "lucide-react";
+import { Mail, Menu, Phone, X } from "lucide-react";
 import Button from "../Button";
+import { handleDownloadProfile } from "@/utility/helperFunction";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -59,6 +60,7 @@ export default function Header() {
                 variant="solid"
                 colorScheme="tertiary"
                 className="rounded-md tracking-wider"
+                onClick={handleDownloadProfile}
               >
                 DOWNLOAD PROFILE
               </Button>

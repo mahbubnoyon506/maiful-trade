@@ -2,7 +2,6 @@
 
 import React from "react";
 import Image from "next/image";
-import { Download, Mail, MessageCircle, QrCode } from "lucide-react";
 import Button from "./Button";
 
 export default function HeroSection() {
@@ -90,40 +89,6 @@ export default function HeroSection() {
             sizes="(max-width: 1024px) 100vw, 700px"
           />
         </div>
-      </div>
-
-      {/* FLOATING VERTICAL ACCENT NAVIGATION BADGE (Hidden on tiny viewport setups) */}
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 bg-tertiary py-6 px-3 rounded-l-2xl flex-col items-center gap-5 shadow-2xl border border-r-0 border-white/10 hidden md:flex">
-        <a
-          href="#"
-          className="text-white hover:scale-110 transition-transform"
-          title="Download Profile"
-        >
-          <Download className="w-5 h-5 stroke-[2.5]" />
-        </a>
-        <a
-          href="mailto:sales@maifultradelink.com"
-          className="text-white hover:scale-110 transition-transform"
-          title="Email Us"
-        >
-          <Mail className="w-5 h-5 stroke-[2.5]" />
-        </a>
-        <a
-          href="https://wa.me/8801711706366"
-          target="_blank"
-          rel="noreferrer"
-          className="text-white hover:scale-110 transition-transform"
-          title="WhatsApp Chat"
-        >
-          <MessageCircle className="w-5 h-5 stroke-[2.5]" />
-        </a>
-        <a
-          href="#"
-          className="text-white hover:scale-110 transition-transform"
-          title="Scan QR Code"
-        >
-          <QrCode className="w-5 h-5 stroke-[2.5]" />
-        </a>
       </div>
     </section>
   );

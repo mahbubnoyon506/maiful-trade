@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Button from "../Button";
+import { handleDownloadProfile } from "@/utility/helperFunction";
 
 export default function Footer() {
   const topLinks = [
@@ -190,7 +191,12 @@ export default function Footer() {
             Solutions in Bangladesh
           </p>
 
-          <Button variant="solid" colorScheme="tertiary" className="rounded-md">
+          <Button
+            variant="solid"
+            colorScheme="tertiary"
+            className="rounded-md"
+            onClick={handleDownloadProfile}
+          >
             DOWNLOAD COMPANY PROFILE
             <img
               className="w-8 h-8 ml-2"
