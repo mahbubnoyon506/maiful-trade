@@ -166,7 +166,7 @@ export default function Footer() {
           </div>
 
           {/* Fixed Floating WhatsApp Badge Placeholder Positioning */}
-          <div className="absolute right-0 top-1/2 -translate-y-1/2 hidden lg:block">
+          {/* <div className="absolute right-0 top-1/2 -translate-y-1/2 hidden lg:block">
             <a
               href="https://wa.me/8801711706366"
               target="_blank"
@@ -181,7 +181,7 @@ export default function Footer() {
                 height={80}
               />
             </a>
-          </div>
+          </div> */}
         </div>
 
         {/* 4. COPYRIGHT & DOWNLOAD BUTTON BAR */}
