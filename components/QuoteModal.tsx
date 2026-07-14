@@ -7,6 +7,10 @@ import { X } from "lucide-react";
 
 type QuoteFormValues = {
   fullName: string;
+  companyName: string;
+  product: string;
+  service: string;
+  projectLocation: string;
   email: string;
   phone: string;
   message: string;
@@ -32,9 +36,13 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
 
   useEffect(() => {
     if (!isOpen) {
-      setSubmitStatus("idle");
-      setSubmitMessage("");
-      reset();
+      const timeout = window.setTimeout(() => {
+        setSubmitStatus("idle");
+        setSubmitMessage("");
+        reset();
+      }, 0);
+
+      return () => window.clearTimeout(timeout);
     }
   }, [isOpen, reset]);
 
@@ -78,7 +86,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
 
   return (
     <div
-      className="fixed inset-0 z-[60] flex items-center justify-center bg-black/70 px-4 py-6 backdrop-blur-sm"
+      className="fixed inset-0 z-60 flex items-center justify-center bg-black/70 px-4 py-6 backdrop-blur-sm"
       role="dialog"
       aria-modal="true"
       onClick={(event) => {
@@ -87,8 +95,8 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
         }
       }}
     >
-      <div className="w-full max-w-xl rounded-2xl border border-white/10 bg-white p-6 text-slate-900 shadow-2xl sm:p-8">
-        <div className="mb-6 flex items-start justify-between gap-4">
+      <div className="w-full max-w-xl rounded-2xl border border-white/10 bg-white p-3 text-slate-900 shadow-2xl sm:p-5">
+        <div className="mb-3 flex items-start justify-between gap-4">
           <div>
             <h3 className="text-2xl font-semibold text-primary">
               Request a Free Quote
@@ -107,28 +115,47 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
           </button>
         </div>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-          <div>
-            <label className="mb-1 block text-sm font-medium text-slate-700">
-              Full Name
-            </label>
-            <input
-              {...register("fullName", {
-                required: "Full name is required",
-              })}
-              className="w-full rounded-lg border border-slate-300 px-3 py-2.5 outline-none ring-0 transition focus:border-tertiary"
-              placeholder="John Doe"
-            />
-            {errors.fullName && (
-              <p className="mt-1 text-sm text-red-500">
-                {errors.fullName.message}
-              </p>
-            )}
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-2">
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div>
+              <label className="mb-1 block text-xs font-medium text-slate-700">
+                Full Name
+              </label>
+              <input
+                {...register("fullName", {
+                  required: "Full name is required",
+                })}
+                className="w-full rounded-lg border border-slate-300 px-2 py-2.5 outline-none ring-0 transition focus:border-tertiary"
+                placeholder="John Doe"
+              />
+              {errors.fullName && (
+                <p className="mt-1 text-sm text-red-500">
+                  {errors.fullName.message}
+                </p>
+              )}
+            </div>
+            <div>
+              <label className="mb-1 block text-xs font-medium text-slate-700">
+                Company Name
+              </label>
+              <input
+                {...register("companyName", {
+                  required: "Company name is required",
+                })}
+                className="w-full rounded-lg border border-slate-300 px-2 py-2.5 outline-none transition focus:border-tertiary"
+                placeholder="ABC Industries"
+              />
+              {errors.companyName && (
+                <p className="mt-1 text-sm text-red-500">
+                  {errors.companyName.message}
+                </p>
+              )}
+            </div>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <label className="mb-1 block text-sm font-medium text-slate-700">
+              <label className="mb-1 block text-xs font-medium text-slate-700">
                 Email
               </label>
               <input
@@ -140,7 +167,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                     message: "Please enter a valid email",
                   },
                 })}
-                className="w-full rounded-lg border border-slate-300 px-3 py-2.5 outline-none transition focus:border-tertiary"
+                className="w-full rounded-lg border border-slate-300 px-2 py-2.5 outline-none transition focus:border-tertiary"
                 placeholder="you@example.com"
               />
               {errors.email && (
@@ -151,14 +178,14 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
             </div>
 
             <div>
-              <label className="mb-1 block text-sm font-medium text-slate-700">
+              <label className="mb-1 block text-xs font-medium text-slate-700">
                 Phone
               </label>
               <input
                 {...register("phone", {
                   required: "Phone number is required",
                 })}
-                className="w-full rounded-lg border border-slate-300 px-3 py-2.5 outline-none transition focus:border-tertiary"
+                className="w-full rounded-lg border border-slate-300 px-2 py-2.5 outline-none transition focus:border-tertiary"
                 placeholder="01711-706366"
               />
               {errors.phone && (
@@ -169,8 +196,95 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
             </div>
           </div>
 
+          <div className="grid gap-4 md:grid-cols-3">
+            <div>
+              <label className="mb-1 block text-xs font-medium text-slate-700">
+                Select Product
+              </label>
+              <select
+                {...register("product", {
+                  required: "Please select a product",
+                })}
+                className="w-full rounded-lg border border-slate-300 px-2 py-2.5 outline-none transition focus:border-tertiary"
+                defaultValue=""
+              >
+                <option value="" disabled>
+                  Choose product
+                </option>
+                <option value="Truck Scale">Truck Scale</option>
+                <option value="Platform Scale">Platform Scale</option>
+                <option value="Floor Scale">Floor Scale</option>
+                <option value="Bench Scale">Bench Scale</option>
+                <option value="Load Cell">Load Cell</option>
+                <option value="Indicator">Indicator</option>
+              </select>
+              {errors.product && (
+                <p className="mt-1 text-sm text-red-500">
+                  {errors.product.message}
+                </p>
+              )}
+            </div>
+
+            <div>
+              <label className="mb-1 block text-xs font-medium text-slate-700">
+                Select Service
+              </label>
+              <select
+                {...register("service", {
+                  required: "Please select a service",
+                })}
+                className="w-full rounded-lg border border-slate-300 px-2 py-2.5 outline-none transition focus:border-tertiary"
+                defaultValue=""
+              >
+                <option value="" disabled>
+                  Choose service
+                </option>
+                <option value="Installation">Installation</option>
+                <option value="Maintenance">Maintenance</option>
+                <option value="Calibration">Calibration</option>
+                <option value="Repair">Repair</option>
+                <option value="Consultation">Consultation</option>
+              </select>
+              {errors.service && (
+                <p className="mt-1 text-sm text-red-500">
+                  {errors.service.message}
+                </p>
+              )}
+            </div>
+
+            <div>
+              <label className="mb-1 block text-xs font-medium text-slate-700">
+                Select Project Location
+              </label>
+              <select
+                {...register("projectLocation", {
+                  required: "Please select a project location",
+                })}
+                className="w-full rounded-lg border border-slate-300 px-2 py-2.5 outline-none transition focus:border-tertiary"
+                defaultValue=""
+              >
+                <option value="" disabled>
+                  Choose location
+                </option>
+                <option value="Dhaka">Dhaka</option>
+                <option value="Chattogram">Chattogram</option>
+                <option value="Khulna">Khulna</option>
+                <option value="Rajshahi">Rajshahi</option>
+                <option value="Rangpur">Rangpur</option>
+                <option value="Sylhet">Sylhet</option>
+                <option value="Barishal">Barishal</option>
+                <option value="Mymensingh">Mymensingh</option>
+              </select>
+              {errors.projectLocation && (
+                <p className="mt-1 text-sm text-red-500">
+                  {errors.projectLocation.message}
+                </p>
+              )}
+            </div>
+          </div>
+
           <div>
-            <label className="mb-1 block text-sm font-medium text-slate-700">
+            <label className="mb-1 block text-xs font-medium text-slate-700">
               Message
             </label>
             <textarea
@@ -178,7 +292,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
               {...register("message", {
                 required: "Message is required",
               })}
-              className="w-full rounded-lg border border-slate-300 px-3 py-2.5 outline-none transition focus:border-tertiary"
+              className="w-full rounded-lg border border-slate-300 px-2 py-2.5 outline-none transition focus:border-tertiary"
               placeholder="Tell us about your requirements..."
             />
             {errors.message && (
@@ -200,7 +314,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
             </div>
           ) : null}
 
-          <div className="flex flex-wrap items-center justify-end gap-3 pt-2">
+          <div className="flex flex-wrap items-center justify-end gap-3 pt-0">
             <Button
               type="button"
               variant="outline"

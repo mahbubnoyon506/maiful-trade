@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { motion } from "motion/react";
 import Button from "./Button";
 import Image from "next/image";
 import QuoteModal from "./QuoteModal";
@@ -11,7 +12,13 @@ export default function CTASection() {
     <section className="bg-white pt-8 sm:pt-16 md:pt-0 font-space-grotesk">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid col-span-1 md:grid-cols-12 items-center gap-6">
-          <div className="md:col-span-7 space-y-6 lg:text-left">
+          <motion.div
+            initial={{ opacity: 0, x: -24 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.55, ease: "easeOut" }}
+            className="md:col-span-7 space-y-6 lg:text-left"
+          >
             <h2 className="text-xl sm:text-3xl xl:text-5xl font-bold tracking-tight uppercase text-primary">
               NOT SURE WHICH SCALE YOU NEED?
             </h2>
@@ -61,9 +68,15 @@ export default function CTASection() {
                 Get Free Consultation
               </Button>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="md:col-span-5">
+          <motion.div
+            initial={{ opacity: 0, x: 24 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.55, delay: 0.1, ease: "easeOut" }}
+            className="md:col-span-5"
+          >
             <Image
               width={517}
               height={789}
@@ -71,7 +84,7 @@ export default function CTASection() {
               src="/assets/images/customer-care.png"
               className=""
             />
-          </div>
+          </motion.div>
         </div>
       </div>
       <QuoteModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />

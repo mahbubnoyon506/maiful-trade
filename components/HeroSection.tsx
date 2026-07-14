@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import { motion } from "motion/react";
 import Button from "./Button";
 import QuoteModal from "./QuoteModal";
 
@@ -12,7 +13,12 @@ export default function HeroSection() {
     <section className=" font-space-grotesk relative bg-primary text-white overflow-hidden py-8 sm:py-16 xl:py-24 min-h-150 ">
       {/* Container wrapper */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="space-y-4 xl:space-y-6">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="space-y-4 xl:space-y-6"
+        >
           <p className="text-sm md:text-base xl:text-lg font-medium tracking-widest uppercase text-white/80">
             WE ARE BEST WEIGHING SCALE PROVIDER
           </p>
@@ -87,9 +93,14 @@ export default function HeroSection() {
               </Button>
             </a>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="relative w-full max-w-75 sm:max-w-105 md:max-w-130 lg:max-w-150 xl:max-w-175 lg:absolute lg:right-0 lg:bottom-0 mx-auto lg:mx-0 mt-8 lg:mt-0">
+        <motion.div
+          initial={{ opacity: 0, x: 24 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+          className="relative w-full max-w-75 sm:max-w-105 md:max-w-130 lg:max-w-150 xl:max-w-175 lg:absolute lg:right-0 lg:bottom-0 mx-auto lg:mx-0 mt-8 lg:mt-0"
+        >
           <Image
             width={700}
             height={600}
@@ -98,7 +109,7 @@ export default function HeroSection() {
             className="w-full h-auto object-contain"
             sizes="(max-width: 1024px) 100vw, 700px"
           />
-        </div>
+        </motion.div>
       </div>
 
       <QuoteModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />

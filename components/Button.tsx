@@ -1,9 +1,12 @@
 "use client";
 
 import React from "react";
+import { motion } from "motion/react";
 import { type VariantProps, cva } from "class-variance-authority";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
+
+const MotionButton = motion.create("button");
 
 // Inlined lightweight alternative to Shadcn's cn utility
 function cn(...inputs: ClassValue[]) {
@@ -107,13 +110,35 @@ export default function Button({
   onClick,
   ...props
 }: ButtonProps) {
+  const buttonProps = props as Omit<
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
+    | "children"
+    | "className"
+    | "onClick"
+    | "onAnimationStart"
+    | "onAnimationEnd"
+    | "onAnimationIteration"
+    | "onTransitionEnd"
+    | "onDrag"
+    | "onDragEnd"
+    | "onDragEnter"
+    | "onDragExit"
+    | "onDragLeave"
+    | "onDragOver"
+    | "onDragStart"
+    | "onDrop"
+  >;
+
   return (
-    <button
+    <MotionButton
+      whileHover={{ y: -2, scale: 1.01 }}
+      whileTap={{ scale: 0.97 }}
+      transition={{ type: "spring", stiffness: 260, damping: 18 }}
       className={cn(buttonVariants({ variant, colorScheme, className }))}
       onClick={onClick}
-      {...props}
+      {...buttonProps}
     >
       {children}
-    </button>
+    </MotionButton>
   );
 }

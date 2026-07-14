@@ -3,9 +3,27 @@ import nodemailer from "nodemailer";
 
 export async function POST(request: Request) {
   try {
-    const { fullName, email, phone, message } = await request.json();
+    const {
+      fullName,
+      companyName,
+      product,
+      service,
+      projectLocation,
+      email,
+      phone,
+      message,
+    } = await request.json();
 
-    if (!fullName || !email || !phone || !message) {
+    if (
+      !fullName ||
+      !companyName ||
+      !product ||
+      !service ||
+      !projectLocation ||
+      !email ||
+      !phone ||
+      !message
+    ) {
       return NextResponse.json(
         { error: "Please fill in all fields." },
         { status: 400 },
@@ -29,6 +47,10 @@ export async function POST(request: Request) {
       html: `
         <h3>New quote request</h3>
         <p><strong>Name:</strong> ${fullName}</p>
+        <p><strong>Company:</strong> ${companyName}</p>
+        <p><strong>Product:</strong> ${product}</p>
+        <p><strong>Service:</strong> ${service}</p>
+        <p><strong>Project Location:</strong> ${projectLocation}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Phone:</strong> ${phone}</p>
         <p><strong>Message:</strong> ${message}</p>

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { motion } from "motion/react";
 import { Box } from "lucide-react";
 import Button from "./Button";
 import QuoteModal from "./QuoteModal";
@@ -50,20 +51,31 @@ export default function ServicesSection() {
     <section className="bg-white py-8 sm:py-16 xl:py-24 font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4 xl:space-y-6 flex flex-col items-center">
         {/* HEADER BLOCK */}
-        <div className="text-center space-y-2">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="text-center space-y-2"
+        >
           <span className="text-sm font-medium tracking-widest uppercase text-secondary">
             OUR SERVICES
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-primary tracking-tight leading-tight uppercase">
             COMPLETE AFTER-SALES SUPPORT AND PROFESSIONAL WEIGHING SERVICES
           </h2>
-        </div>
+        </motion.div>
 
         {/* SERVICES ITEMS MATRIX GRID */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8 w-full">
           {services.map((service, idx) => (
-            <div
+            <motion.div
               key={idx}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.4, delay: idx * 0.08 }}
+              whileHover={{ y: -6, scale: 1.01 }}
               className={`rounded-2xl p-8 transition-all duration-300 flex flex-col justify-between min-h-70 group ${
                 service.isHighlighted
                   ? "bg-primary text-white shadow-xl -translate-y-1"
@@ -96,12 +108,17 @@ export default function ServicesSection() {
                   </p>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
         {/* BOTTOM ACTION CTA */}
-        <div className="">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.45, delay: 0.15 }}
+        >
           <Button
             variant="solid"
             colorScheme="tertiary"
@@ -110,7 +127,7 @@ export default function ServicesSection() {
           >
             GET A FREE QUOTE
           </Button>
-        </div>
+        </motion.div>
       </div>
       <QuoteModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>

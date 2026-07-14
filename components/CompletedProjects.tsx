@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { motion } from "motion/react";
 import { Box } from "lucide-react";
 import Image from "next/image";
 
@@ -49,17 +50,29 @@ export default function CompletedProjects() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         {/* 1. HERO / INTRO GRID */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-center">
-          <div className="lg:col-span-5 relative w-full">
+          <motion.div
+            initial={{ opacity: 0, x: -24 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.55, ease: "easeOut" }}
+            className="lg:col-span-5 relative w-full"
+          >
             <Image
               width={500}
               height={400}
               alt=""
               src="/assets/images/completed-project.png"
             />
-          </div>
+          </motion.div>
 
           {/* Right Block: Explanatory Content */}
-          <div className="lg:col-span-7 space-y-5">
+          <motion.div
+            initial={{ opacity: 0, x: 24 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.55, delay: 0.1, ease: "easeOut" }}
+            className="lg:col-span-7 space-y-5"
+          >
             <span className="text-sm font-medium tracking-widest uppercase text-secondary">
               COMPLETED PROJECTS
             </span>
@@ -85,17 +98,28 @@ export default function CompletedProjects() {
                 ongoing technical support.
               </p>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* SEPARATOR DASHED LINE MATCHING MOCKUP */}
-        <div className="w-full border-t border-dashed border-neutral" />
+        <motion.div
+          initial={{ opacity: 0, scaleX: 0.9 }}
+          whileInView={{ opacity: 1, scaleX: 1 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.45, ease: "easeOut" }}
+          className="w-full border-t border-dashed border-neutral"
+        />
 
         {/* 2. SUB-PROJECTS PORTFOLIO MATRIX */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-12 gap-x-8">
           {projectCards.map((project, idx) => (
-            <div
+            <motion.div
               key={idx}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.4, delay: idx * 0.06 }}
+              whileHover={{ y: -6, scale: 1.01 }}
               className="flex flex-col items-center text-center space-y-4 group max-w-sm mx-auto"
             >
               {/* Project Mini Tag */}
@@ -117,7 +141,7 @@ export default function CompletedProjects() {
               <p className="text-xs sm:text-base text-neutral font-roboto font-light leading-relaxed max-w-75">
                 {project.description}
               </p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
