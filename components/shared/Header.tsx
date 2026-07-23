@@ -5,19 +5,22 @@ import Link from "next/link";
 import { Mail, Menu, Phone, X } from "lucide-react";
 import Button from "../Button";
 import { handleDownloadProfile } from "@/utility/helperFunction";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
   const navLinks = [
-    { name: "HOME", href: "#", isActive: true },
+    { name: "HOME", href: "/" },
     { name: "ABOUT US", href: "#" },
     { name: "PRODUCTS", href: "#" },
-    { name: "PROJECT GALLERY", href: "#" },
+    { name: "PROJECT GALLERY", href: "/project-gallery" },
     { name: "SERVICES", href: "#" },
     { name: "BRAND PARTNER", href: "#" },
     { name: "CONTACT US", href: "#" },
   ];
+  console.log(pathname);
 
   return (
     <>
@@ -88,7 +91,7 @@ export default function Header() {
                   key={link.name}
                   href={link.href}
                   className={`text-xs xl:text-sm font-medium tracking-widest transition-colors duration-200 hover:text-tertiary ${
-                    link.isActive ? "text-tertiary" : "text-white"
+                    pathname === link.href ? "text-tertiary" : "text-white"
                   }`}
                 >
                   {link.name}
@@ -132,7 +135,9 @@ export default function Header() {
                 href={link.href}
                 onClick={() => setIsOpen(false)}
                 className={`block px-3 py-3 text-xs font-bold tracking-widest rounded-md hover:bg-white/5 hover:text-tertiary transition-all ${
-                  link.isActive ? "text-tertiary bg-white/5" : "text-white/90"
+                  pathname.includes(link.href)
+                    ? "text-tertiary bg-white/5"
+                    : "text-white/90"
                 }`}
               >
                 {link.name}
