@@ -12,7 +12,7 @@ export default function Products() {
     <>
       <section className="bg-white py-8 sm:py-16 xl:py-24 font-space-grotesk">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4 xl:space-y-10">
-          <div className="flex justify-center flex-wrap gap-3 pb-4 sm:pb-8 xl:pb-16">
+          <div className="flex justify-center flex-wrap gap-3 pb-4 sm:pb-8 xl:pb-12">
             {categories.map((item) => (
               <Button
                 onClick={() => setActiveCategory(item.name)}

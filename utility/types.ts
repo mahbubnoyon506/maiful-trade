@@ -11,7 +11,7 @@ export interface ProductReview {
   comment: string;
 }
 
-export interface Product {
+export interface ProductType {
   id: number;
   title: string;
   subtitle?: string;

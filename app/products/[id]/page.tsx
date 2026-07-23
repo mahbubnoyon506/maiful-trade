@@ -16,9 +16,12 @@ import {
   CreditCard,
   MessageCircle,
 } from "lucide-react";
-import { Product } from "@/utility/types";
+import { ProductType } from "@/utility/types";
 import { products } from "@/utility/data";
 import Button from "@/components/Button";
+import QuoteModal from "@/components/QuoteModal";
+import QuoteForm from "@/components/QuoteForm";
+import Product from "@/components/Product";
 
 type ActiveTab =
   | "DESCRIPTION"
@@ -32,7 +35,7 @@ export default function ProductDetailPage() {
   const productId = Number(params?.id);
 
   // Find target product or fallback to first product
-  const product: Product =
+  const product: ProductType =
     products.find((p) => p.id === productId) || products[0];
 
   // Gallery Active Image Index
@@ -43,6 +46,8 @@ export default function ProductDetailPage() {
 
   // Active Tab State
   const [activeTab, setActiveTab] = useState<ActiveTab>("DESCRIPTION");
+
+  const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
 
   // Quantity Handlers
   const handleDecreaseQty = () => {
@@ -65,7 +70,7 @@ export default function ProductDetailPage() {
 
   return (
     <>
-      <div className="bg-white min-h-screen py-8 lg:py-14 font-space-grotesk text-slate-800">
+      <div className="bg-white min-h-screen py-8 sm:py-16 xl:py-24 font-space-grotesk text-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           {/* TOP SECTION: GALLERY + PRODUCT HEADER / PURCHASE */}
           <div className=" grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
@@ -214,6 +219,7 @@ export default function ProductDetailPage() {
                 <Button
                   variant="solid"
                   className=" rounded-md tracking-wider bg-[#313131] hover:bg-[#313131]"
+                  onClick={() => setIsQuoteModalOpen(true)}
                 >
                   REQUEST FOR QUOTATION
                 </Button>
@@ -221,6 +227,7 @@ export default function ProductDetailPage() {
                   variant="outline"
                   colorScheme="tertiary"
                   className=" rounded-md tracking-wider hover:bg-transparent hover:text-tertiary"
+                  onClick={() => setIsQuoteModalOpen(true)}
                 >
                   INQUIRY
                 </Button>
@@ -458,7 +465,29 @@ export default function ProductDetailPage() {
             </div>
           </div>
         </div>
+        <div className="bg-primary mt-8 sm:mt-16 xl:mt-24 py-8 sm:py-16 xl:py-24">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <QuoteForm color={"#ffffff"} />
+          </div>
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-16 xl:pt-24">
+          <h1 className="pb-4 sm:pb-8 xl:pb-12 text-xl sm:text-2xl md:text-4xl text-black tracking-wide leading-tight capitalize">
+            Related Products
+          </h1>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+            {products.slice(0, 4).map((product) => (
+              <Product key={product.id} product={product} />
+            ))}
+          </div>
+        </div>
       </div>
+
+      <QuoteModal
+        isOpen={isQuoteModalOpen}
+        onClose={() => setIsQuoteModalOpen(false)}
+        defaultProduct={product.subtitle}
+      />
     </>
   );
 }

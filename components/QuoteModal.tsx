@@ -1,85 +1,20 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import Button from "./Button";
+import React from "react";
 import { X } from "lucide-react";
-
-type QuoteFormValues = {
-  fullName: string;
-  companyName: string;
-  product: string;
-  service: string;
-  projectLocation: string;
-  email: string;
-  phone: string;
-  message: string;
-};
+import QuoteForm from "./QuoteForm";
 
 interface QuoteModalProps {
   isOpen: boolean;
   onClose: () => void;
+  defaultProduct?: string;
 }
 
-export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
-  const [submitStatus, setSubmitStatus] = useState<
-    "idle" | "success" | "error"
-  >("idle");
-  const [submitMessage, setSubmitMessage] = useState("");
-
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors, isSubmitting },
-  } = useForm<QuoteFormValues>();
-
-  useEffect(() => {
-    if (!isOpen) {
-      const timeout = window.setTimeout(() => {
-        setSubmitStatus("idle");
-        setSubmitMessage("");
-        reset();
-      }, 0);
-
-      return () => window.clearTimeout(timeout);
-    }
-  }, [isOpen, reset]);
-
-  const onSubmit = async (data: QuoteFormValues) => {
-    setSubmitStatus("idle");
-    setSubmitMessage("");
-
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-
-      const result = await response.json();
-
-      if (!response.ok) {
-        throw new Error(result?.error || "Unable to send your message.");
-      }
-
-      setSubmitStatus("success");
-      setSubmitMessage("Thank you! Your message has been sent successfully.");
-      reset();
-
-      window.setTimeout(() => {
-        onClose();
-        setSubmitStatus("idle");
-        setSubmitMessage("");
-      }, 1600);
-    } catch (error) {
-      setSubmitStatus("error");
-      setSubmitMessage(
-        error instanceof Error ? error.message : "Unable to send your message.",
-      );
-    }
-  };
-
+export default function QuoteModal({
+  isOpen,
+  onClose,
+  defaultProduct,
+}: QuoteModalProps) {
   if (!isOpen) {
     return null;
   }
@@ -115,226 +50,13 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
           </button>
         </div>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-2">
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div>
-              <label className="mb-1 block text-xs font-medium text-slate-700">
-                Full Name
-              </label>
-              <input
-                {...register("fullName", {
-                  required: "Full name is required",
-                })}
-                className="w-full rounded-lg border border-slate-300 px-2 py-2.5 outline-none ring-0 transition focus:border-tertiary"
-                placeholder="John Doe"
-              />
-              {errors.fullName && (
-                <p className="mt-1 text-sm text-red-500">
-                  {errors.fullName.message}
-                </p>
-              )}
-            </div>
-            <div>
-              <label className="mb-1 block text-xs font-medium text-slate-700">
-                Company Name
-              </label>
-              <input
-                {...register("companyName", {
-                  required: "Company name is required",
-                })}
-                className="w-full rounded-lg border border-slate-300 px-2 py-2.5 outline-none transition focus:border-tertiary"
-                placeholder="ABC Industries"
-              />
-              {errors.companyName && (
-                <p className="mt-1 text-sm text-red-500">
-                  {errors.companyName.message}
-                </p>
-              )}
-            </div>
-          </div>
-
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div>
-              <label className="mb-1 block text-xs font-medium text-slate-700">
-                Email
-              </label>
-              <input
-                type="email"
-                {...register("email", {
-                  required: "Email is required",
-                  pattern: {
-                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                    message: "Please enter a valid email",
-                  },
-                })}
-                className="w-full rounded-lg border border-slate-300 px-2 py-2.5 outline-none transition focus:border-tertiary"
-                placeholder="you@example.com"
-              />
-              {errors.email && (
-                <p className="mt-1 text-sm text-red-500">
-                  {errors.email.message}
-                </p>
-              )}
-            </div>
-
-            <div>
-              <label className="mb-1 block text-xs font-medium text-slate-700">
-                Phone
-              </label>
-              <input
-                {...register("phone", {
-                  required: "Phone number is required",
-                })}
-                className="w-full rounded-lg border border-slate-300 px-2 py-2.5 outline-none transition focus:border-tertiary"
-                placeholder="01711-706366"
-              />
-              {errors.phone && (
-                <p className="mt-1 text-sm text-red-500">
-                  {errors.phone.message}
-                </p>
-              )}
-            </div>
-          </div>
-
-          <div className="grid gap-4 md:grid-cols-3">
-            <div>
-              <label className="mb-1 block text-xs font-medium text-slate-700">
-                Select Product
-              </label>
-              <select
-                {...register("product", {
-                  required: "Please select a product",
-                })}
-                className="w-full rounded-lg border border-slate-300 px-2 py-2.5 outline-none transition focus:border-tertiary"
-                defaultValue=""
-              >
-                <option value="" disabled>
-                  Choose product
-                </option>
-                <option value="Truck Scale">Truck Scale</option>
-                <option value="Platform Scale">Platform Scale</option>
-                <option value="Floor Scale">Floor Scale</option>
-                <option value="Bench Scale">Bench Scale</option>
-                <option value="Load Cell">Load Cell</option>
-                <option value="Indicator">Indicator</option>
-              </select>
-              {errors.product && (
-                <p className="mt-1 text-sm text-red-500">
-                  {errors.product.message}
-                </p>
-              )}
-            </div>
-
-            <div>
-              <label className="mb-1 block text-xs font-medium text-slate-700">
-                Select Service
-              </label>
-              <select
-                {...register("service", {
-                  required: "Please select a service",
-                })}
-                className="w-full rounded-lg border border-slate-300 px-2 py-2.5 outline-none transition focus:border-tertiary"
-                defaultValue=""
-              >
-                <option value="" disabled>
-                  Choose service
-                </option>
-                <option value="Installation">Installation</option>
-                <option value="Maintenance">Maintenance</option>
-                <option value="Calibration">Calibration</option>
-                <option value="Repair">Repair</option>
-                <option value="Consultation">Consultation</option>
-              </select>
-              {errors.service && (
-                <p className="mt-1 text-sm text-red-500">
-                  {errors.service.message}
-                </p>
-              )}
-            </div>
-
-            <div>
-              <label className="mb-1 block text-xs font-medium text-slate-700">
-                Select Project Location
-              </label>
-              <select
-                {...register("projectLocation", {
-                  required: "Please select a project location",
-                })}
-                className="w-full rounded-lg border border-slate-300 px-2 py-2.5 outline-none transition focus:border-tertiary"
-                defaultValue=""
-              >
-                <option value="" disabled>
-                  Choose location
-                </option>
-                <option value="Dhaka">Dhaka</option>
-                <option value="Chattogram">Chattogram</option>
-                <option value="Khulna">Khulna</option>
-                <option value="Rajshahi">Rajshahi</option>
-                <option value="Rangpur">Rangpur</option>
-                <option value="Sylhet">Sylhet</option>
-                <option value="Barishal">Barishal</option>
-                <option value="Mymensingh">Mymensingh</option>
-              </select>
-              {errors.projectLocation && (
-                <p className="mt-1 text-sm text-red-500">
-                  {errors.projectLocation.message}
-                </p>
-              )}
-            </div>
-          </div>
-
-          <div>
-            <label className="mb-1 block text-xs font-medium text-slate-700">
-              Message
-            </label>
-            <textarea
-              rows={4}
-              {...register("message", {
-                required: "Message is required",
-              })}
-              className="w-full rounded-lg border border-slate-300 px-2 py-2.5 outline-none transition focus:border-tertiary"
-              placeholder="Tell us about your requirements..."
-            />
-            {errors.message && (
-              <p className="mt-1 text-sm text-red-500">
-                {errors.message.message}
-              </p>
-            )}
-          </div>
-
-          {submitMessage ? (
-            <div
-              className={`rounded-lg px-3 py-2 text-sm ${
-                submitStatus === "success"
-                  ? "bg-green-50 text-green-700"
-                  : "bg-red-50 text-red-700"
-              }`}
-            >
-              {submitMessage}
-            </div>
-          ) : null}
-
-          <div className="flex flex-wrap items-center justify-end gap-3 pt-0">
-            <Button
-              type="button"
-              variant="outline"
-              colorScheme="primary"
-              className="border-neutral text-tertiary hover:bg-white/10 hover:text-tertiary rounded-sm"
-              onClick={onClose}
-            >
-              Cancel
-            </Button>
-            <Button
-              type="submit"
-              variant="solid"
-              colorScheme="tertiary"
-              className="rounded-sm"
-              disabled={isSubmitting}
-            >
-              {isSubmitting ? "Sending..." : "Send Request"}
-            </Button>
-          </div>
-        </form>
+        <QuoteForm
+          defaultProduct={defaultProduct}
+          showCancel
+          onCancel={onClose}
+          onSuccess={onClose}
+          resetKey={isOpen}
+        />
       </div>
     </div>
   );

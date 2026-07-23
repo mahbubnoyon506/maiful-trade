@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Button from "./Button";
 import { ArrowRight } from "lucide-react";
-import type { Product as ProductItem } from "@/utility/types";
+import type { ProductType as ProductItem } from "@/utility/types";
 
 type ProductProps = {
   product: ProductItem;
