@@ -14,13 +14,12 @@ export default function Header() {
   const navLinks = [
     { name: "HOME", href: "/" },
     { name: "ABOUT US", href: "#" },
-    { name: "PRODUCTS", href: "#" },
+    { name: "PRODUCTS", href: "/products" },
     { name: "PROJECT GALLERY", href: "/project-gallery" },
     { name: "SERVICES", href: "#" },
     { name: "BRAND PARTNER", href: "#" },
     { name: "CONTACT US", href: "#" },
   ];
-  console.log(pathname);
 
   return (
     <>
