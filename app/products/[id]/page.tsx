@@ -252,7 +252,7 @@ export default function ProductDetailPage() {
                     src="/assets/images/whatsapp.png"
                   />
                   <span className="ml-1">
-                    What's app : {product.whatsappNumber}
+                    What&apos;s app : {product.whatsappNumber}
                   </span>
                 </Button>
               </a>
